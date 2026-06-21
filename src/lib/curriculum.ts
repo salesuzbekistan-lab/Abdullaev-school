@@ -7,7 +7,7 @@ export const LESSON_STATUS_LABELS: Record<string, string> = {
 export const STAGE_TYPE_LABELS: Record<string, string> = {
   video_theory: "1. Video dars + nazariya",
   vocabulary: "2. Amaliy mashqlar",
-  listening: "3. Masala yechish",
+  listening: "3. Topshiriqlar",
   reading: "4. Nazorat savollari",
 };
 

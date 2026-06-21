@@ -24,24 +24,34 @@ export default async function TeacherStudentsPage() {
         <p className="mt-2 text-ink/70">O&apos;zlashtirish foizi va izohlar shu yerdan boshqariladi.</p>
       </div>
 
-      <table className="w-full max-w-2xl text-left text-sm">
+      <table className="w-full max-w-3xl text-left text-sm">
         <thead className="text-ink/60">
           <tr>
             <th className="py-2">Ism</th>
-            <th className="py-2">Matematika</th>
+            <th className="py-2">O&apos;zlashtirish</th>
             <th className="py-2"></th>
           </tr>
         </thead>
         <tbody>
           {students?.map((s) => {
-            const mastery = (
+            const masteryList = (
               s.mastery_scores as unknown as { mastery_pct: number; subjects: { name: string } | null }[]
-            )?.[0];
+            ) ?? [];
             return (
               <tr key={s.id} className="border-t border-ink/10">
                 <td className="py-2">{s.full_name}</td>
                 <td className="py-2">
-                  {mastery ? `${Math.round(mastery.mastery_pct * 100)}%` : "—"}
+                  {masteryList.length > 0 ? (
+                    <div className="flex flex-wrap gap-3">
+                      {masteryList.map((m, i) => (
+                        <span key={i} className="text-ink/70">
+                          {m.subjects?.name}: <strong className="text-gold">{Math.round(m.mastery_pct * 100)}%</strong>
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    "—"
+                  )}
                 </td>
                 <td className="py-2">
                   <Link href={`/teacher/students/${s.id}`} className="text-navy underline">
