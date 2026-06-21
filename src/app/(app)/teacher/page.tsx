@@ -15,12 +15,14 @@ export default async function TeacherDashboard() {
         Dars rejalashtirish, baholash navbati va o&apos;quvchilarga izoh yozish shu yerda
         bo&apos;ladi.
       </p>
-      <Link
-        href="/teacher/calendar"
-        className="mt-4 inline-block rounded-md bg-navy px-4 py-2 text-parchment"
-      >
-        Content calendar&apos;ni ochish
-      </Link>
+      <div className="mt-4 flex gap-3">
+        <Link href="/teacher/calendar" className="rounded-md bg-navy px-4 py-2 text-parchment">
+          Content calendar&apos;ni ochish
+        </Link>
+        <Link href="/teacher/students" className="rounded-md border border-navy px-4 py-2 text-navy">
+          O&apos;quvchilar
+        </Link>
+      </div>
     </div>
   );
 }
