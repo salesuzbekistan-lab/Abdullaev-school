@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  /* Abdullayev School brand tokens (Brand Book v1, 2026) */
+  --color-navy: #0f2a52;
+  --color-gold: #c9a227;
+  --color-parchment: #f7f3e8;
+  --color-ink: #0a1c38;
+
+  --background: var(--color-parchment);
+  --foreground: var(--color-ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--color-navy);
+  --color-gold: var(--color-gold);
+  --color-parchment: var(--color-parchment);
+  --color-ink: var(--color-ink);
+
+  --font-display: "Cormorant Garamond", "EB Garamond", serif;
+  --font-body: "Inter", Arial, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
