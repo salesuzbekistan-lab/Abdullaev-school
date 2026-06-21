@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth";
 
@@ -14,6 +15,12 @@ export default async function TeacherDashboard() {
         Dars rejalashtirish, baholash navbati va o&apos;quvchilarga izoh yozish shu yerda
         bo&apos;ladi.
       </p>
+      <Link
+        href="/teacher/calendar"
+        className="mt-4 inline-block rounded-md bg-navy px-4 py-2 text-parchment"
+      >
+        Content calendar&apos;ni ochish
+      </Link>
     </div>
   );
 }

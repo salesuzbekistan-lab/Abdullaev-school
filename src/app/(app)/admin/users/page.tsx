@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentProfile } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
@@ -20,6 +21,9 @@ export default async function AdminUsersPage() {
         <p className="mt-2 text-ink/70">
           Rollar faqat shu yerdan tayinlanadi — o&apos;z-o&apos;ziga ro&apos;yxatdan o&apos;tish yo&apos;q.
         </p>
+        <Link href="/teacher/calendar" className="mt-2 inline-block text-navy underline">
+          Content calendar&apos;ni ochish
+        </Link>
       </div>
 
       <form action={createUser} className="flex max-w-md flex-col gap-3">
