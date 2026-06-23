@@ -25,7 +25,7 @@ export default async function TeacherStudentsPage() {
       </div>
 
       <div className="max-w-3xl overflow-x-auto">
-        <table className="w-full text-left text-sm">
+        <table className="w-full min-w-max text-left text-sm">
           <thead className="text-ink/70">
             <tr>
               <th className="py-2">Ism</th>
