@@ -4,8 +4,10 @@
   /* Abdullayev School brand tokens (Brand Book v1, 2026) */
   --color-navy: #0f2a52;
   --color-gold: #c9a227;
+  --color-gold-ink: #7d6019;
   --color-parchment: #f7f3e8;
   --color-ink: #0a1c38;
+  --color-error: #dc2626;
 
   --background: var(--color-parchment);
   --foreground: var(--color-ink);
@@ -16,8 +18,10 @@
   --color-foreground: var(--foreground);
   --color-navy: var(--color-navy);
   --color-gold: var(--color-gold);
+  --color-gold-ink: var(--color-gold-ink);
   --color-parchment: var(--color-parchment);
   --color-ink: var(--color-ink);
+  --color-error: var(--color-error);
 
   --font-display: "Cormorant Garamond", "EB Garamond", serif;
   --font-body: "Inter", Arial, sans-serif;

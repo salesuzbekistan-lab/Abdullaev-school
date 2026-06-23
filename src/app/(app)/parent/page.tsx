@@ -48,17 +48,17 @@ export default async function ParentDashboard() {
         <div key={child.studentId} className="flex flex-col gap-4 rounded-lg border border-ink/10 bg-white p-5">
           <h2 className="font-display text-2xl text-navy">{child.fullName}</h2>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             {child.mastery.map((m, i) => (
               <div key={i} className="rounded-lg border border-ink/10 px-4 py-3">
-                <p className="text-xs uppercase text-ink/50">
+                <p className="text-xs uppercase text-ink/70">
                   {(m.subjects as unknown as { name: string } | null)?.name}
                 </p>
-                <p className="font-display text-xl text-gold">{Math.round(m.mastery_pct * 100)}%</p>
+                <p className="font-display text-xl text-gold-ink">{Math.round(m.mastery_pct * 100)}%</p>
               </div>
             ))}
             {child.mastery.length === 0 && (
-              <p className="text-ink/60">Hali baholar mavjud emas.</p>
+              <p className="text-ink/70">Hali baholar mavjud emas.</p>
             )}
           </div>
 
@@ -67,7 +67,7 @@ export default async function ParentDashboard() {
             <div className="mt-2 flex flex-col gap-2">
               {child.comments.map((c) => (
                 <div key={c.id} className="rounded-md border border-ink/10 p-3">
-                  <p className="text-xs text-ink/50">
+                  <p className="text-xs text-ink/70">
                     {new Date(c.created_at).toLocaleDateString("uz-UZ")}
                     {c.lessons ? ` · ${(c.lessons as unknown as { title: string }).title}` : ""}
                   </p>
@@ -75,14 +75,14 @@ export default async function ParentDashboard() {
                 </div>
               ))}
               {child.comments.length === 0 && (
-                <p className="text-ink/60">Hali izoh yozilmagan.</p>
+                <p className="text-ink/70">Hali izoh yozilmagan.</p>
               )}
             </div>
           </div>
         </div>
       ))}
 
-      {children.length === 0 && <p className="text-ink/60">Hech qaysi farzand bog&apos;lanmagan.</p>}
+      {children.length === 0 && <p className="text-ink/70">Hech qaysi farzand bog&apos;lanmagan.</p>}
     </div>
   );
 }

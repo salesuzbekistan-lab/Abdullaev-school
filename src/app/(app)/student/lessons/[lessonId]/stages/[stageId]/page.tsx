@@ -39,7 +39,7 @@ export default async function StageQuizPage({
 
       {submission && (
         <div
-          className={`rounded-lg border p-4 ${passed ? "border-navy bg-navy/5" : "border-red-300 bg-red-50"}`}
+          className={`rounded-lg border p-4 ${passed ? "border-navy bg-navy/5" : "border-error/30 bg-error/5"}`}
         >
           Natija: {submission.correct_count}/{submission.total_count} to&apos;g&apos;ri (
           {Math.round(submission.score * 100)}%) — {passed ? "o'tdingiz ✓" : "qayta urinib ko'ring"}

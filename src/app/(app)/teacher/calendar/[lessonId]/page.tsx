@@ -37,7 +37,7 @@ export default async function LessonDetailPage({
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <p className="text-sm text-ink/60">
+        <p className="text-sm text-ink/70">
           {subjectName} / {className}
         </p>
         <h1 className="font-display text-3xl font-semibold text-navy">{lesson.title}</h1>
@@ -81,26 +81,42 @@ export default async function LessonDetailPage({
         className="flex max-w-xl flex-col gap-3 rounded-lg border border-ink/10 bg-white p-5"
       >
         <h2 className="font-display text-xl text-navy">Dars ma&apos;lumotlari</h2>
+        <label htmlFor="title" className="sr-only">
+          Dars mavzusi
+        </label>
         <input
+          id="title"
           name="title"
           defaultValue={lesson.title}
           required
           className="rounded-md border border-ink/20 px-4 py-2"
         />
+        <label htmlFor="scheduled_date" className="sr-only">
+          Sana
+        </label>
         <input
+          id="scheduled_date"
           name="scheduled_date"
           type="date"
           defaultValue={lesson.scheduled_date}
           required
           className="rounded-md border border-ink/20 px-4 py-2"
         />
+        <label htmlFor="video_url" className="sr-only">
+          Video havola
+        </label>
         <input
+          id="video_url"
           name="video_url"
           placeholder="Video havola (ixtiyoriy)"
           defaultValue={lesson.video_url ?? ""}
           className="rounded-md border border-ink/20 px-4 py-2"
         />
+        <label htmlFor="theory_content" className="sr-only">
+          Nazariy qism
+        </label>
         <textarea
+          id="theory_content"
           name="theory_content"
           defaultValue={lesson.theory_content ?? ""}
           rows={4}
@@ -125,14 +141,20 @@ export default async function LessonDetailPage({
               <input type="hidden" name="stage_type" value={stageType} />
               <input type="hidden" name="stage_order" value={stageOrder} />
               <h3 className="font-display text-lg text-navy">{STAGE_TYPE_LABELS[stageType]}</h3>
-              <label className="text-xs text-ink/60">O&apos;tish chegarasi (0-1)</label>
+              <label htmlFor={`pass_threshold-${stageType}`} className="text-xs text-ink/70">
+                O&apos;tish chegarasi (0-1)
+              </label>
               <input
+                id={`pass_threshold-${stageType}`}
                 name="pass_threshold"
                 defaultValue={existing?.pass_threshold ?? "0.750"}
                 className="w-32 rounded-md border border-ink/20 px-3 py-1.5 text-sm"
               />
-              <label className="text-xs text-ink/60">Savollar (JSON)</label>
+              <label htmlFor={`content-${stageType}`} className="text-xs text-ink/70">
+                Savollar (JSON)
+              </label>
               <textarea
+                id={`content-${stageType}`}
                 name="content"
                 defaultValue={JSON.stringify(existing?.content ?? { questions: [] }, null, 2)}
                 rows={8}

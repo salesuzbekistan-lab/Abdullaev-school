@@ -32,15 +32,20 @@ export default async function StudentLessonPage({
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <p className="text-sm text-ink/60">
+        <p className="text-sm text-ink/70">
           {(lesson.subjects as unknown as { name: string } | null)?.name} · {lesson.scheduled_date}
         </p>
         <h1 className="font-display text-3xl font-semibold text-navy">{lesson.title}</h1>
       </div>
 
       {lesson.video_url && (
-        <a href={lesson.video_url} target="_blank" className="text-navy underline">
-          Video darsni ochish
+        <a
+          href={lesson.video_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-navy underline"
+        >
+          Video darsni ochish (yangi oynada)
         </a>
       )}
 
@@ -60,16 +65,16 @@ export default async function StudentLessonPage({
             <Link
               key={s.id}
               href={`/student/lessons/${lessonId}/stages/${s.id}`}
-              className="flex items-center justify-between rounded-lg border border-ink/10 bg-white p-4 hover:border-navy"
+              className="flex items-center justify-between rounded-lg border border-ink/10 bg-white p-4 transition-colors hover:border-navy"
             >
               <span>{STAGE_TYPE_LABELS[s.stage_type] ?? s.stage_type}</span>
               {submission ? (
-                <span className={passed ? "text-navy" : "text-red-600"}>
+                <span className={passed ? "text-navy" : "text-error"}>
                   {submission.correct_count}/{submission.total_count} to&apos;g&apos;ri (
                   {Math.round(submission.score * 100)}%) {passed ? "✓" : "qayta urinish kerak"}
                 </span>
               ) : (
-                <span className="text-gold">Boshlash →</span>
+                <span className="text-gold-ink">Boshlash →</span>
               )}
             </Link>
           );

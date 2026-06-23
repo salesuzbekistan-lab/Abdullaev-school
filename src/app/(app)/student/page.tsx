@@ -42,16 +42,16 @@ export default async function StudentDashboard() {
       </div>
 
       {mastery && mastery.length > 0 && (
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           {mastery.map((m, i) => {
             const subjectName = (m.subjects as unknown as { name: string } | null)?.name;
             return (
               <div key={i} className="rounded-lg border border-ink/10 bg-white px-5 py-4">
-                <p className="text-xs uppercase text-ink/50">{subjectName}</p>
-                <p className="font-display text-2xl text-gold">
+                <p className="text-xs uppercase text-ink/70">{subjectName}</p>
+                <p className="font-display text-2xl text-gold-ink">
                   {Math.round(m.mastery_pct * 100)}%
                 </p>
-                <p className="text-xs text-ink/50">o&apos;zlashtirish</p>
+                <p className="text-xs text-ink/70">o&apos;zlashtirish</p>
               </div>
             );
           })}
@@ -66,23 +66,23 @@ export default async function StudentDashboard() {
             <Link
               key={l.id}
               href={`/student/lessons/${l.id}`}
-              className="flex flex-col gap-1 rounded-lg border border-ink/10 bg-white p-5 hover:border-navy"
+              className="flex flex-col gap-1 rounded-lg border border-ink/10 bg-white p-5 transition-colors hover:border-navy"
             >
-              <p className="text-xs text-ink/50">
+              <p className="text-xs text-ink/70">
                 {l.scheduled_date} · {(l.subjects as unknown as { name: string } | null)?.name}
               </p>
               <p className="font-display text-lg text-navy">{l.title}</p>
               <p className="text-sm text-ink/70">
                 {passedCount}/{stages.length} bosqich bajarildi
               </p>
-              <p className="text-xs text-ink/40">
+              <p className="text-xs text-ink/70">
                 {stages.map((s) => STAGE_TYPE_LABELS[s.stage_type]?.split(". ")[1]).join(" · ")}
               </p>
             </Link>
           );
         })}
         {(!lessons || lessons.length === 0) && (
-          <p className="text-ink/60">Hozircha sizga ochilgan dars yo&apos;q.</p>
+          <p className="text-ink/70">Hozircha sizga ochilgan dars yo&apos;q.</p>
         )}
       </div>
     </div>

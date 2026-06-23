@@ -42,11 +42,11 @@ export default async function StudentDetailPage({
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="font-display text-3xl font-semibold text-navy">{student.full_name}</h1>
-        <div className="mt-2 flex gap-4">
+        <div className="mt-2 flex flex-wrap gap-4">
           {mastery?.map((m, i) => (
             <p key={i} className="text-ink/70">
               {(m.subjects as unknown as { name: string } | null)?.name}:{" "}
-              <strong className="text-gold">{Math.round(m.mastery_pct * 100)}%</strong>
+              <strong className="text-gold-ink">{Math.round(m.mastery_pct * 100)}%</strong>
             </p>
           ))}
         </div>
@@ -58,7 +58,10 @@ export default async function StudentDetailPage({
           className="flex max-w-xl flex-col gap-3 rounded-lg border border-ink/10 bg-white p-5"
         >
           <h2 className="font-display text-xl text-navy">Izoh qoldirish</h2>
-          <select name="lesson_id" className="rounded-md border border-ink/20 px-4 py-2">
+          <label htmlFor="lesson_id" className="sr-only">
+            Bog&apos;liq dars
+          </label>
+          <select id="lesson_id" name="lesson_id" className="rounded-md border border-ink/20 px-4 py-2">
             <option value="">(darsga bog&apos;lanmagan)</option>
             {recentLessons?.map((l) => (
               <option key={l.id} value={l.id}>
@@ -66,7 +69,11 @@ export default async function StudentDetailPage({
               </option>
             ))}
           </select>
+          <label htmlFor="comment_text" className="sr-only">
+            Izoh matni
+          </label>
           <textarea
+            id="comment_text"
             name="comment_text"
             required
             rows={3}
@@ -83,7 +90,7 @@ export default async function StudentDetailPage({
         <h2 className="font-display text-xl text-navy">Izohlar tarixi</h2>
         {comments?.map((c) => (
           <div key={c.id} className="rounded-lg border border-ink/10 bg-white p-4">
-            <p className="text-xs text-ink/50">
+            <p className="text-xs text-ink/70">
               {new Date(c.created_at).toLocaleDateString("uz-UZ")}
               {c.lessons ? ` · ${(c.lessons as unknown as { title: string }).title}` : ""}
             </p>
@@ -91,7 +98,7 @@ export default async function StudentDetailPage({
           </div>
         ))}
         {(!comments || comments.length === 0) && (
-          <p className="text-ink/60">Hali izoh yozilmagan.</p>
+          <p className="text-ink/70">Hali izoh yozilmagan.</p>
         )}
       </div>
     </div>

@@ -8,9 +8,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex min-h-full flex-1 flex-col bg-parchment">
-      <header className="flex items-center justify-between border-b border-ink/10 px-6 py-4">
+      <header className="flex flex-col gap-3 border-b border-ink/10 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
         <span className="font-display text-xl font-semibold text-navy">Abdullayev School</span>
-        <div className="flex items-center gap-4 text-sm text-ink/80">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-ink/80">
           <span>
             {profile.full_name} · {profile.role}
           </span>
